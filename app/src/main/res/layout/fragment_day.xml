@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/day_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/medium_margin">
 
-    <include layout="@layout/top_navigation"/>
+    <include layout="@layout/top_navigation" />
 
-    <com.simplemobiletools.commons.views.MyRecyclerView
-        android:id="@+id/day_events"
+    <com.simplemobiletools.calendar.views.MyScrollView
+        android:id="@+id/day_events_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/top_value"
-        android:clipToPadding="false"
-        app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"/>
+        android:layout_below="@+id/week_top_holder"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
+        <RelativeLayout
+            android:id="@+id/day_events_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/day_horizontal_grid_holder"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/weekly_view_events_height"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/day_events_columns_holder"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/weekly_view_events_height"
+                android:background="@android:color/transparent"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </com.simplemobiletools.calendar.views.MyScrollView>
 </RelativeLayout>

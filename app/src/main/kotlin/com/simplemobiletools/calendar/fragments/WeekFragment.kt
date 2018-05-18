@@ -94,7 +94,8 @@ class WeekFragment : Fragment(), WeeklyCalendar {
         }
 
         (0..6).map { inflater.inflate(R.layout.stroke_vertical_divider, mView.week_vertical_grid_holder) }
-        (0..23).map { inflater.inflate(R.layout.stroke_horizontal_divider, mView.week_horizontal_grid_holder) }
+        (0..23).map {
+            inflater.inflate(R.layout.stroke_horizontal_divider, mView.week_horizontal_grid_holder) }
 
         wasFragmentInit = true
         return mView

@@ -7,9 +7,9 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import android.util.SparseArray
 import com.simplemobiletools.calendar.fragments.DayFragment
 import com.simplemobiletools.calendar.helpers.DAY_CODE
-import com.simplemobiletools.calendar.interfaces.NavigationListener
+import com.simplemobiletools.calendar.interfaces.WeekFragmentListener
 
-class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, private val mListener: NavigationListener) :
+class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, private val mListener: WeekFragmentListener) :
         FragmentStatePagerAdapter(fm) {
     private val mFragments = SparseArray<DayFragment>()
 
@@ -34,4 +34,10 @@ class MyDayPagerAdapter(fm: FragmentManager, private val mCodes: List<String>, p
             mFragments[pos + i]?.updateCalendar()
         }
     }
+
+    fun updateScrollY(pos: Int, y: Int) {
+        mFragments[pos - 1]?.updateScrollY(y)
+        mFragments[pos + 1]?.updateScrollY(y)
+    }
+
 }
